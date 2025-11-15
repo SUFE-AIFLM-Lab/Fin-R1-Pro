@@ -1,18 +1,12 @@
 # Fin-R1-Pro：察势、慧算、通达
 
-![logo](logo.png)
+<!-- <img src="logo.png" alt="logo" height="30em"> -->
 
-**察势：洞察市场趋势，识别投资机会**
+<img src="图片3.png" alt="图片3" height="30em"> **察势：洞察市场趋势，识别投资机会**
 
-![图片3](图片3.png)
+<img src="图片2.png" alt="图片2" height="30em"> **慧算：智慧精算分析，推理精准深入**
 
-**慧算：智慧精算分析，推理精准深入**
-
-![图片2](图片2.png)
-
-**通达：融会贯通知识，全面理解金融**
-
-![图片1](图片1.png)
+<img src="图片1.png" alt="图片1" height="30em"> **通达：融会贯通知识，全面理解金融**
 
 ![摘要](摘要.png)
 
@@ -173,27 +167,51 @@ Fin-R1-Pro在真实业务场景中的表现同样亮眼。在**banking77、XBRL�
 
 ##### ① 证券行业
 
-视频演示：[股票-金融数理价格计算.mov](股票-金融数理价格计算.mov)
+<video controls width="100%">
+  <source src="股票-金融数理价格计算.mov" type="video/quicktime">
+  <source src="股票-金融数理价格计算.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ##### ② 银行行业
 
-视频演示：[银行信贷.mov](银行信贷.mov)
+<video controls width="100%">
+  <source src="银行信贷.mov" type="video/quicktime">
+  <source src="银行信贷.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ##### ③ 保险行业
 
-视频演示：[保险相关.mov](保险相关.mov)
+<video controls width="100%">
+  <source src="保险相关.mov" type="video/quicktime">
+  <source src="保险相关.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ##### ④ 基金行业
 
-视频演示：[证明两基金分离定理.mov](证明两基金分离定理.mov)
+<video controls width="100%">
+  <source src="证明两基金分离定理.mov" type="video/quicktime">
+  <source src="证明两基金分离定理.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ##### ⑤ 期货行业
 
-视频演示：[期货相关.mov](期货相关.mov)
+<video controls width="100%">
+  <source src="期货相关.mov" type="video/quicktime">
+  <source src="期货相关.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ##### ⑥ 信托行业
 
-视频演示：[债转股问题.mov](债转股问题.mov)
+<video controls width="100%">
+  <source src="债转股问题.mov" type="video/quicktime">
+  <source src="债转股问题.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ### 通用能力
 
@@ -324,7 +342,11 @@ Fin-R1-Pro拥有系统化的通用能力框架，在**知识理解**与**数学�
 
 💡 复核完成！研报生成成功！
 
-视频演示：[32b.mov](32b.mov)
+<video controls width="100%">
+  <source src="32b.mov" type="video/quicktime">
+  <source src="32b.mov" type="video/mp4">
+  您的浏览器不支持HTML5视频。
+</video>
 
 ## 联系我们
 
