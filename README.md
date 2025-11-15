@@ -167,51 +167,27 @@ Fin-R1-Pro在真实业务场景中的表现同样亮眼。在**banking77、XBRL�
 
 ##### ① 证券行业
 
-<video controls width="100%">
-  <source src="股票-金融数理价格计算.mov" type="video/quicktime">
-  <source src="股票-金融数理价格计算.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [股票-金融数理价格计算视频](股票-金融数理价格计算.mov)
 
 ##### ② 银行行业
 
-<video controls width="100%">
-  <source src="银行信贷.mov" type="video/quicktime">
-  <source src="银行信贷.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [银行信贷视频](银行信贷.mov)
 
 ##### ③ 保险行业
 
-<video controls width="100%">
-  <source src="保险相关.mov" type="video/quicktime">
-  <source src="保险相关.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [保险相关视频](保险相关.mov)
 
 ##### ④ 基金行业
 
-<video controls width="100%">
-  <source src="证明两基金分离定理.mov" type="video/quicktime">
-  <source src="证明两基金分离定理.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [证明两基金分离定理视频](证明两基金分离定理.mov)
 
 ##### ⑤ 期货行业
 
-<video controls width="100%">
-  <source src="期货相关.mov" type="video/quicktime">
-  <source src="期货相关.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [期货相关视频](期货相关.mov)
 
 ##### ⑥ 信托行业
 
-<video controls width="100%">
-  <source src="债转股问题.mov" type="video/quicktime">
-  <source src="债转股问题.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [债转股问题视频](债转股问题.mov)
 
 ### 通用能力
 
@@ -342,11 +318,7 @@ Fin-R1-Pro拥有系统化的通用能力框架，在**知识理解**与**数学�
 
 💡 复核完成！研报生成成功！
 
-<video controls width="100%">
-  <source src="32b.mov" type="video/quicktime">
-  <source src="32b.mov" type="video/mp4">
-  您的浏览器不支持HTML5视频。
-</video>
+📹 [32B模型演示视频](32b.mov)
 
 ## 联系我们
 
