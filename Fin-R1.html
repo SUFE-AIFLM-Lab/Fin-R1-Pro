@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 文档基础设置 -->
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8，支持中文显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式设计，适配移动设备 -->
+    <title>Fin-R1-Pro：察势、慧算、通达</title> <!-- 页面标题，显示在浏览器标签页 -->
+    
+    <!-- CSS样式部分 -->
+    <style>
+        /* 全局重置样式 - 清除浏览器默认边距和内边距 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 盒模型设置为border-box，便于布局计算 */
+        }
+        
+        /* 页面主体样式 */
+        body {
+            font-family: "微软雅黑", "Microsoft YaHei", sans-serif; /* 设置中文字体，优先使用微软雅黑 */
+            line-height: 1.8; /* 设置行高，提高可读性 */
+            color: #333; /* 设置主要文字颜色为深灰色 */
+            background-color: #fff; /* 设置背景颜色为白色 */
+            max-width: 900px; /* 设置页面最大宽度，保持内容区域适中 */
+            margin: 0 auto; /* 水平居中显示 */
+            padding: 20px; /* 设置内边距 */
+        }
+        
+        /* 主容器样式 */
+        .container {
+            width: 100%; /* 容器宽度占满父元素 */
+        }
+        
+        /* 页头区域样式 */
+        .header {
+            text-align: center; /* 文本居中对齐 */
+            margin-bottom: 15px; /* 减少底部外边距 */
+            padding: 10px 0; /* 减少上下内边距 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* 标题图标样式 */
+        .title-icon {
+            width: 60px; /* 图标宽度 */
+            height: 60px; /* 图标高度 */
+            margin-right: 12px
+        }
+        
+        /* 主标题样式 */
+        .main-title {
+            font-size: 36px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            margin-bottom: 10px; /* 减少底部外边距 */
+            color: #1a365d; /* 标题颜色 - 深蓝色 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 副标题样式 */
+        .sub-title {
+            font-size: 20px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            margin: 8px 0; /* 减少上下外边距 */
+            display: flex; /* 使用flex布局 */
+            align-items: center; /* 垂直居中对齐 */
+            justify-content: center; /* 水平居中对齐 */
+            color: #2d3748; /* 副标题颜色 - 深灰色 */
+        }
+        
+        /* 副标题中的图标样式 */
+        .sub-title img {
+            margin-right: 5px; /* 图标右侧外边距 */
+            width: 48px; /* 图标宽度 */
+            height: 48px; /* 图标高度 */
+        }
+        
+        /* 内容区块样式 */
+        .content-section {
+            margin-bottom: 40px; /* 区块底部外边距 */
+        }
+        
+        /* 一级标题样式 */
+        .section-title {
+            font-size: 24px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            color: #F5A95F; /* 标题颜色 - 加深后的橙色 */
+            margin: 30px 0 20px 0; /* 上下外边距 */
+            padding-bottom: 10px; /* 底部内边距 */
+            border-bottom: 2px solid #F5A95F; /* 底部边框，作为标题下划线 */
+            text-align: left; /* 文本左对齐 */
+        }
+        
+        /* 二级标题样式 */
+        .subsection-title {
+            font-size: 18px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            color: #f0c894; /* 标题颜色 - 加深后的橙色 */
+            margin: 25px 0 15px 0; /* 上下外边距 */
+            text-align: left; /* 文本左对齐 */
+        }
+        /* 二.5级标题样式 */
+        .subsection2-title {
+            font-size: 22px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            color: #eeb871; /* 标题颜色 - 加深后的橙色 */
+            margin: 25px 0 15px 0; /* 上下外边距 */
+            text-align: left; /* 文本左对齐 */
+        }
+        /* 段落样式 */
+        p {
+            margin-bottom: 16px; /* 段落底部外边距 */
+            text-align: justify; /* 文本两端对齐 */
+            font-size: 16px; /* 字体大小 */
+        }
+        
+        /* 高亮文本样式 */
+        .highlight {
+            color: #e53e3e; /* 高亮颜色 - 红色 */
+            font-weight: bold; /* 字体加粗 */
+        }
+        
+        /* 比较表格样式 */
+        .comparison-table {
+            width: 100%; /* 表格宽度占满容器 */
+            border-collapse: collapse; /* 合并表格边框 */
+            margin: 20px 0; /* 表格上下外边距 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 表格阴影效果 */
+        }
+        
+        /* 表格单元格样式 */
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd; /* 单元格边框 */
+            padding: 12px; /* 单元格内边距 */
+            text-align: center; /* 文本居中对齐 */
+        }
+        
+        /* 表格表头样式 */
+        .comparison-table th {
+            background-color: #f2f2f2; /* 表头背景色 */
+            font-weight: bold; /* 字体加粗 */
+        }
+        
+        /* 表格隔行变色效果 */
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9; /* 偶数行背景色 */
+        }
+        
+        /* 图片容器样式 */
+        .image-container {
+            text-align: center; /* 图片居中对齐 */
+            margin: 25px 0; /* 容器上下外边距 */
+        }
+        
+        /* 通用图片样式 */
+        .image-container img {
+            max-width: 80%; /* 图片最大宽度为容器80% */
+            height: auto; /* 高度自适应，保持比例 */
+            border-radius: 8px; /* 图片圆角 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 图片阴影效果 */
+        }
+        
+        /* GIF图片特殊样式 */
+        .gif-image {
+            max-width: 90% !important; /* GIF图片最大宽度为90% */
+            border: 2px solid #f0c284; /* 添加边框突出显示 */
+        }
+
+        /* 视频支持 */
+        .video-element {
+            display: block;
+            /* max-width: 100%; */
+            width: 90% !important;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+            border: 2px solid #f0c284; /* 添加边框突出显示 */
+            border-radius: 8px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        /* 摘要图片特殊样式 - 缩小处理 */
+        .abstract-image {
+            max-width: 60% !important; /* 摘要图片最大宽度为60%，使用!important提高优先级 */
+        }
+        
+        /* 比较图特殊样式 - 放大处理 */
+        .comparison-image {
+            max-width: 95% !important; /* 比较图最大宽度为95%，使用!important提高优先级 */
+        }
+        
+        /* 图片说明文字样式 */
+        .image-caption {
+            font-size: 14px; /* 字体大小 */
+            color: #666; /* 文字颜色 - 灰色 */
+            margin-top: 8px; /* 顶部外边距 */
+            font-style: italic; /* 斜体样式 */
+        }
+        
+        /* 特性列表样式 */
+        .feature-list {
+            list-style-type: none; /* 移除默认列表样式 */
+            padding-left: 20px; /* 左侧内边距 */
+        }
+        
+        /* 列表项样式 */
+        .feature-list li {
+            margin-bottom: 12px; /* 列表项底部外边距 */
+            position: relative; /* 相对定位，为自定义列表标记定位做准备 */
+            padding-left: 25px; /* 左侧内边距，为自定义列表标记留空间 */
+        }
+        
+        /* 自定义列表标记样式 */
+        .feature-list li:before {
+            content: "•"; /* 使用圆点作为列表标记 */
+            color: #f0c284; /* 标记颜色 */
+            font-size: 20px; /* 标记大小 */
+            position: absolute; /* 绝对定位 */
+            left: 0; /* 定位到左侧 */
+            top: -2px; /* 微调垂直位置 */
+        }
+        
+        /* 能力项样式 */
+        .capability-item {
+            margin-bottom: 15px; /* 底部外边距 */
+            padding-left: 20px; /* 左侧内边距 */
+            border-left: 3px solid #eaa558; /* 左侧边框，作为视觉分隔 */
+        }
+        
+        /* 案例分析板块样式 */
+        .case-analysis {
+            background-color: #f9f9f9; /* 浅灰色背景 */
+            border-radius: 8px; /* 圆角边框 */
+            padding: 20px; /* 内边距 */
+            margin: 20px 0; /* 外边距 */
+            border-left: 4px solid #F5A95F; /* 左侧边框，突出显示 */
+        }
+        
+        /* 案例分析标题样式 */
+        .case-title {
+            font-size: 18px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            color: #1a365d; /* 标题颜色 */
+            margin-bottom: 15px; /* 底部外边距 */
+        }
+        /* 演示案例样式 */
+        .demo-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 25px auto;
+            max-width: 900px; /* 增大宽度 */
+            background-color: #fff;
+        }
+        
+        .demo-header {
+            padding: 12px 16px;
+            background-color: #f7fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4299e1; /* 修改为蓝色，与图片一致 */
+        }
+        
+        .demo-dropdown {
+            padding: 6px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            background-color: #f7fafc;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .demo-subheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+        }
+        
+        .demo-subtitle {
+            font-size: 16px;
+            color: #2d3748;
+            font-weight: bold;
+        }
+        
+        .demo-pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .demo-pagination-button {
+            padding: 4px 8px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .demo-content {
+            padding: 16px;
+            /* 移除了max-height和overflow-y属性，让内容完全展开 */
+        }
+        
+        .demo-user-request {
+            background-color: #eeb871;
+            color: white;
+            border-radius: 18px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            max-width: 80%;
+            float: right;
+            clear: both;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .demo-user-request-text {
+            color: white;
+            font-size: 14px;
+        }
+        
+        .demo-ai-response {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            clear: both;
+        }
+        
+        .demo-ai-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .demo-ai-content {
+            flex: 1;
+        }
+        
+        .demo-ai-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .demo-ai-name {
+            font-weight: bold;
+            margin-right: 8px;
+            color: #2d3748;
+        }
+        
+        .demo-ai-status {
+            color: #48bb78;
+            font-size: 12px;
+        }
+        
+        .demo-ai-text {
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 14px;
+            text-align: left; /* 添加左对齐 */
+        }
+        
+        .demo-image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .demo-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+        
+        .demo-text {
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .demo-option-title {
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #2d3748;
+        }
+        
+        .demo-option {
+            margin-left: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .demo-option-bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #f6ad55;
+            margin-right: 8px;
+        }
+        
+        /* 响应式设计 - 移动设备适配 */
+        @media (max-width: 768px) {
+            /* 移动设备上的主体样式调整 */
+            body {
+                padding: 15px; /* 减少内边距 */
+                max-width: 100%; /* 宽度占满屏幕 */
+            }
+            
+            /* 移动设备上的标题图标调整 */
+            .title-icon {
+                width: 60px; /* 缩小图标 */
+                height: 60px; /* 缩小图标 */
+            }
+            
+            /* 移动设备上的主标题调整 */
+            .main-title {
+                font-size: 28px; /* 缩小字体大小 */
+                margin-bottom: 10px; /* 减少底部外边距 */
+            }
+            
+            /* 移动设备上的副标题调整 */
+            .sub-title {
+                font-size: 18px; /* 缩小字体大小 */
+                margin: 5px 0; /* 减少上下外边距 */
+            }
+            
+            /* 移动设备上的一级标题调整 */
+            .section-title {
+                font-size: 22px; /* 缩小字体大小 */
+            }
+            
+            /* 移动设备上的表格调整 */
+            .comparison-table {
+                font-size: 14px; /* 缩小字体大小 */
+            }
+            
+            /* 移动设备上的通用图片调整 */
+            .image-container img {
+                max-width: 95%; /* 图片宽度增大，适应小屏幕 */
+            }
+            
+            /* 移动设备上的图标调整 */
+            .sub-title img {
+                width: 20px; /* 缩小图标 */
+                height: 20px; /* 缩小图标 */
+            }
+            
+            /* 移动设备上的摘要图片调整 */
+            .abstract-image {
+                max-width: 80% !important; /* 摘要图片宽度增大 */
+            }
+            
+            /* 移动设备上的比较图调整 */
+            .comparison-image {
+                max-width: 100% !important; /* 比较图宽度占满容器 */
+            }
+            /* 移动设备上的演示案例调整 */
+            .demo-container {
+                max-width: 100%;
+            }
+            
+            .demo-content {
+                padding: 12px;
+                /* 移除了max-height属性 */
+            }
+        
+            /* 移动设备上的GIF图片调整 */
+            .gif-image {
+                max-width: 100% !important; /* GIF图片宽度占满容器 */
+            }
+            
+            .video-element {
+                max-width: 100% !important;
+            }
+
+            /* 移动设备上的案例分析调整 */
+
+        }
+                /* 为演示案例添加特定样式 */
+                .report-divider {
+            height: 1px;
+            background-color: #cbd5e0;
+            margin: 12px 0;
+        }
+        
+        .report-content {
+            text-align: left !important;
+            padding-top: 8px;
+        }
+        
+        .report-step {
+            margin: 15px 0;
+        }
+        
+        .step-header {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .step-content {
+            margin-left: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .sql-code {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 8px 0;
+        }
+        
+        .news-link {
+            color: #4299e1;
+            text-decoration: none;
+        }
+        
+        .news-link:hover {
+            text-decoration: underline;
+        }
+        
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        .report-table th, .report-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .report-table th {
+            background-color: #f7fafc;
+            font-weight: bold;
+        }
+        
+        .report-image {
+            max-width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 页面主容器 -->
+    <div class="container">
+        <!-- 页头区域 -->
+        <div class="header">
+            <!-- 标题图标 -->
+            
+            
+            <!-- 主标题 -->
+            <div class="main-title">
+                <img src="logo.png" alt="logo.png" class="title-icon">
+                <span>Fin-R1-Pro：察势、慧算、通达</span> <!-- 主标题文字 -->
+            </div>
+            <!-- 副标题1：察势 -->
+            <div class="sub-title">
+                <img src="图片3.png" alt="图片3.png"> <!-- 使用图片1.png作为图标 -->
+                <span>察势：洞察市场趋势，识别投资机会</span> <!-- 副标题文字 -->
+            </div>
+            
+            <!-- 副标题2：慧算 -->
+            <div class="sub-title">
+                <img src="图片2.png" alt="图片2.png"> <!-- 使用图片1.png作为图标 -->
+                <span>慧算：智慧精算分析，推理精准深入</span> <!-- 副标题文字 -->
+            </div>
+            
+            <!-- 副标题3：通达 -->
+            <div class="sub-title">
+                <img src="图片1.png" alt="图片1.png"> <!-- 使用图片1.png作为图标 -->
+                <span>通达：融会贯通知识，全面理解金融</span> <!-- 副标题文字 -->
+            </div>
+        </div>
+    
+        <!-- 内容容器 -->
+        <div class="content-container">
+            <!-- 摘要部分 -->
+            <section class="content-section">
+                <!-- 摘要图片 -->
+                <div class="image-container">
+                    <img src="摘要.png" alt="摘要.png" class="architecture-image abstract-image">
+                    <!-- 移除了"摘要"字样，使用abstract-image类缩小图片 -->
+                </div>
+                
+                <!-- 摘要内容 -->
+                <div class="abstract-content">
+                    <p>继Fin-R1(7B)模型发布之后，我们非常高兴地推出<strong>Fin-R1-Pro(32B)</strong>——一款在<strong>模型规模与金融能力</strong>之间实现双重突破的金融大模型。它不仅具备超大参数规模，更在专业金融推理、知识理解与任务泛化方面实现质的跃升。Fin-R1-Pro(32B)以超百万条高质量金融语料为基础，融合自主研发的五阶段数据合成与筛选策略，显著提升模型的语义理解、数值推理与任务泛化能力。在这一代模型中，我们在多个维度实现了突破式跃升——从文本理解到复杂推理，从知识掌握到场景应用，Fin-R1-Pro(32B)在多个权威金融Benchmark上表现领先，它不仅更聪明，也更稳健，真正实现了「让模型懂金融、会思考、能行动」，标志着金融智能迈入全新阶段。</p>
+                    
+                    <!-- 模型对比表格 -->
+                    <div class="image-caption" style="text-align: center;">表1：Fin-R1(7B)与Fin-R1-Pro(32B)对比</div> <!-- 图片说明 -->
+                    <table class="comparison-table">
+                    
+                        <thead>
+                            <tr>
+                                <th>维度</th>
+                                <th>Fin-R1（7B）</th>
+                                <th>Fin-R1-Pro（32B）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>模型参数</td>
+                                <td>7B</td>
+                                <td><strong>32B</strong></td>
+                            </tr>
+                            <tr>
+                                <td>训练数据量</td>
+                                <td>100K-level</td>
+                                <td><strong>1M-level</strong></td>
+                            </tr>
+                            <tr>
+                                <td>数据处理</td>
+                                <td>基础数据清洗</td>
+                                <td><strong>五阶段数据合成与筛选</strong></td>
+                            </tr>
+                            <tr>
+                                <td>核心算法</td>
+                                <td>GRPO</td>
+                                <td><strong>自研SRPO算法*</strong></td>
+                            </tr>
+                            <tr>
+                                <td>综合能力</td>
+                                <td>表现优异</td>
+                                <td>多个权威榜单(FinQA、ConvFinQA、BizBench、FinEval、Fineva、XBRL等)实现SOTA 🏆</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="image-caption">注*：Self-Adaptive Reward Policy Optimization</div> <!-- 图片说明 -->
+                </div>
+            </section>
+            
+            <!-- 核心亮点部分 -->
+            <section class="content-section">
+                <h2 class="section-title">核心亮点</h2> <!-- 核心亮点标题 -->
+                
+                <!-- 核心亮点介绍 -->
+                <div class="economic-bench-intro">
+                    <p>Fin-R1-Pro的目标，是让模型不仅能"理解"金融数据，更能洞察市场、推演逻辑、辅助决策。为此，我们在六大能力维度上实现系统性突破——从知识到认知，从推理到执行，全面重塑金融智能的边界：</p>
+                </div>
+                
+                <!-- 详细亮点列表 -->
+                <div class="detailed-performance">
+                    <h3 class="subsection-title">五阶段数据合成与筛选：重塑金融认知的"精细打磨术"</h3>
+                    <p>Fin-R1-Pro采用自主研发的五阶段数据合成与推理蒸馏策略，融合银行、证券、保险、信托、期货、基金等六大行业数据，完成从数据清洗、知识抽取到逻辑蒸馏的全流程进化，让模型在复杂金融语义中具备更细腻的理解与更稳健的逻辑链构建能力。</p>
+                    
+                    <h3 class="subsection-title">32B超大参数规模：解锁金融能力的"跃迁式升级"</h3>
+                    <p>在大参数规模的支撑下，Fin-R1-Pro实现了从通用语言模型到专业金融大模型的跨越。无论是财报计算、资产估值还是宏观推理，模型均能展现出行业领先的语义一致性与数值精度，实现能力与规模的双向跃升。</p>
+                    
+                    <h3 class="subsection-title">全链路金融任务闭环：从"理解"到"行动"的端到端贯通</h3>
+                    <p>模型能够理解、推理并执行全链条金融任务，实现从数据认知到决策辅助的闭环进化。在投研分析、量化策略、风险评估等任务中，模型不仅能洞察因果逻辑，更能生成可执行的智能方案。</p>
+                    
+                    <h3 class="subsection-title">多层次金融认知体系：让模型真正"懂金融、会思考"</h3>
+                    <p>通过多层次认知建模框架，体系化捕捉金融实体、概念与逻辑关系，模型能够精准理解市场语义与政策脉络，具备真正的金融思维与情境推理能力，实现从"知道"到"理解"的跃迁。</p>
+                    
+                    <h3 class="subsection-title">智能风控与合规守护：构建金融安全的"智能防线"</h3>
+                    <p>内置多维风控与合规识别机制，可自动识别欺诈、洗钱、内幕交易、行业合规等潜在风险，并生成可解释的分析理由，为金融机构提供可追溯、透明且高可靠的智能防控支持。</p>
+                    
+                    <h3 class="subsection-title">多场景金融应用引擎：驱动智能金融的"全生态扩展"</h3>
+                    <p>Fin-R1-Pro在银行信贷、证券投研、保险精算、信托管理、基金配置与期货交易等场景中均展现出卓越表现。模型可作为金融智能体核心底座，为机构级与个人级业务提供可落地的智能解决方案。</p>
+                </div>
+            </section>
+            
+            <!-- 模型能力部分 -->
+            <section class="content-section">
+                <h2 class="section-title">技术路线</h2> <!-- 模型能力标题 -->
+
+                
+                <!-- 模型能力架构图 -->
+                <div class="image-container">
+                    
+                    <img src="模型能力架构图.png" alt="模型能力架构图.png" class="architecture-image comparison-image">
+                    <div class="image-caption">图1: 技术路线图</div> <!-- 图片说明 -->
+                </div>
+                                
+                <!-- 模型能力描述 -->
+                <div class="case1-description">
+                    <p>我们在数据处理、监督微调、强化学习各方面作了全面创新，使用<strong>五阶段数据合成</strong>、两阶段训练过程，通过高质量推理数据集、先进强化学习算法，优化模型的推理过程。具体地，我们通过自研的五阶段数据合成流程在<strong>百万量级</strong>数据中筛选出高质量结构化数据，接着通过监督微调提高模型金融领域能力的同时结构化输出内容。最后我们提出了<strong>SRPO</strong>算法，通过自适应强化学习算法，将生成式的奖励模型与基于规则的奖励相结合，有效解决了传统基于规则的奖励单一、固定，难以覆盖复杂、多样化场景以及人工设定评分原则静态、有限，难以适应语境动态变化和用户需求多变的问题，能够获取更加精确、细粒度的奖励信号，实现模型能力的进一步提升。</p>
+                </div>
+            </section>
+            
+            <!-- 模型性能部分 -->
+            <section class="content-section">
+                <h2 class="section-title">模型性能</h2> <!-- 模型性能标题 -->
+                
+                <!-- 模型性能介绍 -->
+                <div class="case1-description">
+                    <p>我们在多个国际通用与金融专用评测体系上全面评估了<strong>Fin-R1-Pro</strong>的综合能力。结果表明，该模型在金融任务中表现出卓越的专业深度与稳定性，在通用任务上同样保持了优异的语言、推理与知识泛化能力。这一成果验证了Fin-R1-Pro作为新一代<strong>兼顾规模与金融智能</strong>的模型，在专业性与通用性之间实现了真正的平衡与突破。</p>
+                </div>
+                
+                <!-- 金融能力子部分 -->
+                <h3 class="subsection2-title">金融能力</h3>
+                
+                <!-- 金融能力描述 -->
+                <div class="case1-description">
+                    <p>我们重点在多个金融专用基准上系统评估了Fin-R1-Pro的行业智能表现，涵盖以下<strong>六大核心能力维度</strong>：</p>
+                    
+                    <!-- 金融能力列表 -->
+                    <ul class="feature-list">
+                        <li><strong>金融推理能力</strong>：处理多步推导的复杂问题，在数值计算、逻辑链条建模与因果归因等任务中展现严密性与准确性。</li>
+                        <li><strong>金融认知能力</strong>：深度解读市场动态、政策意图与商业行为背后的微观逻辑，形成对金融生态的系统性理解与洞察。</li>
+                        <li><strong>金融知识能力</strong>：融合银行、证券、保险、信托、期货等多元知识，具备高效的跨领域知识调用与关联推理能力。</li>
+                        <li><strong>金融文本能力</strong>：专精于处理公告、研报、财报及监管文件，能够精准完成信息抽取、实体识别与因果脉络梳理。</li>
+                        <li><strong>金融风控能力</strong>：主动侦测欺诈、洗钱及内幕交易等风险信号，并提供具有清晰逻辑依据与证据支撑的风险判断。</li>
+                        <li><strong>金融应用能力</strong>：面向投研、量化、风控等核心场景，提供端到端的可执行方案，实现从分析到决策的智能闭环。</li>
+                    </ul>
+                    
+                    <p>在这六大维度下，Fin-R1-Pro在各项评测中均实现领先表现，构建起完整的金融智能能力框架，体现出从<strong>知识理解 → 逻辑推理 → 决策执行</strong>的系统化跃升。</p>
+                    
+                    <p>为了系统展示模型在不同层面的能力表现，我们从<strong>权威数据集评测结果</strong>、<strong>综合数据集表现</strong>以及<strong>特定任务子集效果</strong>三个角度进行了对比分析，以下图表清晰呈现了Fin-R1-Pro在金融智能领域的全面优势：</p>
+                </div>
+                
+                <!-- 综合表现评测子部分 -->
+                <h4 class="subsection-title">权威数据集评测：Fin-R1-Pro在全域金融任务中的整体领先</h4>
+                
+                <!-- 综合表现评测图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型的比较.png" alt="Fin-R1-32B与先进闭源模型和开源模型的比较.png" class="architecture-image comparison-image">
+                    <div class="image-caption">图2: Fin-R1-Pro与先进开闭源模型的比较</div>
+                    <!-- 使用comparison-image类放大图片 -->
+                    
+                </div>
+                
+                <!-- 综合表现评测描述 -->
+                <div class="case1-description">
+                    <p>Fin-R1-Pro构建了多维度、全链路的能力矩阵，不仅覆盖从人类思考到决策输出的完整流程，更在复杂场景下展现出卓越的泛化能力与鲁棒性，能高效应对金融各领域任务挑战。在金融推理、金融知识、金融认知、金融合规、金融安全、金融应用领域全方位展现出了卓越性能，超过了GPT-4o、Deepseek-R1、Qwen3-30B-A3B-Thinking-2507等先进开闭源模型，Fino1-14B、DianJin-32B等金融垂域模型。在极具挑战性的金融推理计算FinQA、ConvFinQA、BizBench、专注于金融认知与金融知识的Fineval、聚焦于金融合规与安全的Fineva、致力于金融财报结构化分析的XBRL基准测试上均表现优异，远超同参数金融垂域模型，优于超大参数通用模型。</p>
+                </div>
+                
+                <!-- 合并数据集评测子部分 -->
+                <h4 class="subsection-title">综合数据集评测：多任务协同下的稳健泛化表现</h4>
+                
+                <!-- 合并数据集评测图表1 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型的比较2.png" alt="Fin-R1-32B与先进闭源模型和开源模型的比较2.png" class="architecture-image">
+                    <div class="image-caption">图3: Fin-R1-Pro与先进开闭源模型的比较</div>
+                    
+                </div>
+                
+
+                
+                <!-- 合并数据集评测图表2 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型的比较3.png" alt="Fin-R1-32B与先进闭源模型和开源模型的比较3.png" class="architecture-image">
+                    <div class="image-caption">图4: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 合并数据集评测描述2 -->
+                <div class="case1-description">
+                    <p>我们的模型在FinBen和FinGPT上表现优异，分别以85.0和84.2的加权得分超过了GPT-4o、Deepseek-R1、Qwen-30B-A3B-Instruct-2507等先进开闭源模型,DianJin-R1-32B、Fino1-14B等金融垂类模型，展现了Fin-R1-Pro在涉及金融知识、文本、推理、情绪识别、应用领域强大的综合能力。这一结果表明，Fin-R1-Pro在<strong>专业语境理解、语义一致性与逻辑判断</strong>方面实现系统性突破，能够基于丰厚的金融知识，精确理解各种形式的金融文本，进行严谨缜密的逻辑推理，最终生成可信结论，<strong>成为当前最具真实语境理解力的金融大模型之一。</strong></p>
+                </div>
+                
+                <!-- 六维度任务表现子部分 -->
+                <h4 class="subsection-title">六维度任务表现：在关键金融各任务上的深度突破</h4>
+                
+                <!-- 金融推理能力子部分 -->
+                <h5 class="subsection-title">①金融推理能力方面——逻辑严谨</h5>
+                
+                <!-- 金融推理能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在ConvFinQA数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在ConvFinQA数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图5: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融推理能力描述 -->
+                <div class="case1-description">
+                    <p>金融推理领域的强逻辑性与计算严谨性，让大多数先进模型例如GPT-4o、DeepSeek-R1、DianJin-R1-32B等有较大提升空间，而Fin-R1-Pro在<strong>FinQA、ConvFinQA、TATQA等</strong>金融推理数据集上表现出色，取得<strong>85.4分</strong>的领先成绩，能够在多步推理中精准处理财务数据与语言条件，构建稳定的推理链条实现<strong>真正"理解"金融问题，而不仅仅是回答问题。</strong></p>
+                </div>
+                               
+                <!-- 金融认知能力子部分 -->
+                <h5 class="subsection-title">②金融认知能力方面——洞察精准</h5>
+                
+                <!-- 金融认知能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在enfpb数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在enfpb数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图6: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融认知能力描述 -->
+                <div class="case1-description">
+                    <p>金融市场的在语义与行为逻辑上的独特性使得Deepseek-R1与GPT-4o等主流模型表现不佳，但Fin-R1-Pro以亮眼的表现在<strong>PIXIU_enfpb、Finance_Instruck_500K、Finova等</strong>金融认知数据集上取得<strong>92.6分</strong>，能够更好地捕捉经济情境与政策含义，在宏观趋势、行业逻辑与企业行为的理解上更贴近真实金融语境，实现<strong>不仅"算得对"，更"想得明白"。</strong></p>
+                </div>
+                
+                
+                <!-- 金融知识能力子部分 -->
+                <h5 class="subsection-title">③金融知识能力方面——融会贯通</h5>
+                
+                <!-- 金融知识能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在Fineval数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在Fineval数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图7: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融知识能力描述 -->
+                <div class="case1-description">
+                    <p>Fin-R1-Pro在金融知识理解与应用层面实现全面突破。在<strong>Fineval、FinanceIQ、CFLUE</strong>等数据集上表现优异，取得<strong>91.0分</strong>，领先Kimi-K2、DianJin-R1-32B与Qwen3-30B系列模型。该结果显示模型具备稳健的金融知识结构与推理融合能力，能在估值逻辑、风险评估、宏观政策等问题上给出更具解释性的判断。<strong>Fin-R1-Pro不只是"知道"，更能"用知识去推理"。</strong></p>
+                </div>
+                
+                
+                <!-- 金融文本能力子部分 -->
+                <h5 class="subsection-title">④金融文本能力方面——解析透彻</h5>
+                
+                <!-- 金融文本能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在FinGPT_finred数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在FinGPT_finred数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图8: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融文本能力描述 -->
+                <div class="case1-description">
+                    <p>深度的文本解析能力不仅要求准确识别财报公告中的关键实体及其关联，还要敏锐捕捉复杂金融文本中隐含的因果逻辑与情感倾向。在这类任务上Fin-R1-Pro展现出优异表现，在<strong>FinGPT_finred、EDTSUM、FinBen_na</strong>等数据集上以<strong>59.3分</strong>排名第二，仅次于DeepSeek-R1，领先GPT-4o与多款金融专用模型，能够精准抽取公告与新闻中的实体关系，并理解复杂语句中的因果与情绪隐含，展现出强大的语言解析能力。<strong>在真实场景中，Fin-R1-Pro能从文本中"读出市场"，而不仅仅是"读懂文字"。</strong></p>
+                </div>
+                
+                
+                <!-- 金融风控能力子部分 -->
+                <h5 class="subsection-title">⑤金融风控能力方面——预警前瞻</h5>
+                
+                <!-- 金融风控能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在FinGPT_headline数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在FinGPT_headline数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图9: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融风控能力描述 -->
+                <div class="case1-description">
+                    <p>风险识别与合规判断方面Fin-R1-Pro表现突出，在<strong>FinGPT_headline、FinEva、FinancialPhraseBank</strong>等数据集上表现出色，取得<strong>96.7分</strong>的最高成绩，显著超越GPT-4o、DeepSeek-R1与多款先进模型，能够准确识别新闻与公告中的潜在风险信号、市场波动趋势及舆情情绪，为风控预警和合规审查提供智能支持，<strong>不仅能理解市场，还能"先于市场发现风险"。</strong></p>
+                </div>
+                
+                <!-- 金融应用能力子部分 -->
+                <h5 class="subsection-title">⑥金融应用能力方面——业务精通</h5>
+                
+                <!-- 金融应用能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="Fin-R1-32B与先进闭源模型和开源模型在banking77数据集上的得分差异.png" alt="Fin-R1-32B与先进闭源模型和开源模型在banking77数据集上的得分差异.png" class="architecture-image">
+                    <div class="image-caption">图10: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 金融应用能力描述 -->
+                <div class="case1-description">
+                    <p>Fin-R1-Pro在真实业务场景中的表现同样亮眼。在<strong>banking77、XBRL、PIXIU_acl</strong>等数据集上表现优异，取得<strong>92.5分</strong>，显著领先Qwen3-30B-A3B-Thinking-2507、Kimi-K2与GPT-4o等模型。模型能快速理解银行业务语义，处理咨询、投诉、产品解释等多类任务，展现出高实用性的语言理解与任务执行能力。<strong>它不只是研究模型，而是能直接参与金融服务工作的智能助手</strong>。</p>
+                </div>
+                
+                <!-- 业务场景能力子部分 -->
+                <h3 class="subsection2-title">业务场景能力</h3>
+                                
+                <!-- 业务场景能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="业务场景能力.png" alt="业务场景能力.png" class="architecture-image">
+                    <div class="image-caption">图11: 业务场景能力</div>
+                </div>
+                
+                <!-- 业务场景能力描述 -->
+                <div class="case1-description">
+                    <p> 为精准衡量在真实金融业务中的表现，我们搭建了证券、银行、保险、基金、期货、信托六大评测场景，覆盖金融行业全领域业务。从证券场景下的投研决策，到银行行业下的风险评估等，深度对标金融行业核心业务逻辑与实际运作流程，以真实业务需求为出发点，确保评测与行业实际应用紧密贴合，兼具真实性与有效性。</p>
+                </div>
+            
+                <!-- 证券案例分析 -->
+                <h3 class="subsection-title">业务场景示例</h3>
+                <div class="case-analysis">
+                    <div class="case-title">① 证券行业</div>
+                    <div class="image-container">
+                        <!-- <img src="股票-金融数理价格计算.gif" alt="股票-金融数理价格计算.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="股票-金融数理价格计算.mov" type="video/quicktime">
+                            <source src="股票-金融数理价格计算.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>
+                <div class="case-analysis">
+                    <div class="case-title">② 银行行业</div>
+                    <div class="image-container">
+                        <!-- <img src="银行信贷.gif" alt="银行信贷.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="银行信贷.mov" type="video/quicktime">
+                            <source src="银行信贷.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>                
+                <div class="case-analysis">
+                    <div class="case-title">③ 保险行业</div>
+                    <div class="image-container">
+                        <!-- <img src="保险相关.gif" alt="保险相关.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="保险相关.mov" type="video/quicktime">
+                            <source src="保险相关.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>                <div class="case-analysis">
+                    <div class="case-title">④ 基金行业</div>
+                    <div class="image-container">
+                        <!-- <img src="证明两基金分离定理.gif" alt="证明两基金分离定理.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="证明两基金分离定理.mov" type="video/quicktime">
+                            <source src="证明两基金分离定理.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>                <div class="case-analysis">
+                    <div class="case-title">⑤ 期货行业</div>
+                    <div class="image-container">
+                        <!-- <img src="期货相关.gif" alt="期货相关.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="期货相关.mov" type="video/quicktime">
+                            <source src="期货相关.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>                <div class="case-analysis">
+                    <div class="case-title">⑥ 信托行业</div>
+                    <div class="image-container">
+                        <!-- <img src="债转股问题.gif" alt="债转股问题.gif" class="gif-image"> -->
+                        <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                            <source src="债转股问题.mov" type="video/quicktime">
+                            <source src="债转股问题.mov" type="video/mp4">
+                            您的浏览器不支持HTML5视频。
+                        </video>
+                    </div>
+                </div>
+                <!-- 通用能力子部分 -->
+                <h3 class="subsection2-title">通用能力</h3>
+                
+                <!-- 通用能力描述 -->
+                <div class="case1-description">
+                    <p>我们系统评估了Fin-R1-Pro在通用能力方面的表现，以评估模型在金融智能范围之外是否保留了原有的通用知识和推理能力，重点聚焦于以下两大核心维度：</p>
+                    
+                    <!-- 通用能力列表 -->
+                    <ul class="feature-list">
+                        <li><strong>知识能力：</strong>在MMLU_PRO与GPQA权威基准测试中，MMLU_PRO涵盖法学、医学、计算机科学、艺术学等14个学科，GPQA涵盖生物学、物理学、化学的专家难题。模型展现出广泛且深度的知识覆盖与跨学科理解能力，能够准确处理高复杂度、跨领域的科学知识性问题。</li>
+                        <li><strong>数学能力：</strong>在MATH-500评测集上，模型表现出优秀的数学推理与解题能力，涵盖代数、几何、概率等多个数学分支，体现出扎实的数值运算与逻辑分析基础。</li>
+                    </ul>
+                    
+                    <p>通过上述综合评测，<strong>Fin-R1-Pro在通用知识与数学推理两大领域均展现出与通用模型相当的竞争力和稳健表现，奠定了其在广泛知识理解到复杂逻辑推理的扎实能力根基。</strong></p>
+                </div>
+            
+                <!-- 综合图表 -->
+                <div class="image-container">
+                    
+                    <img src="通用数据集.png" alt="通用数据集.png" class="architecture-image">
+                    <div class="image-caption">图12: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 综合图表描述 -->
+                <div class="case1-description">
+                    <p>Fin-R1-Pro拥有系统化的通用能力框架，在<strong>知识理解</strong>与<strong>数学推理</strong>两大关键维度上表现稳健。在极具挑战性的通用评测基准中，该模型展现出与<strong>主流先进模型相当的竞争力</strong>：在专业深度极强的GPQA知识问答中成绩突出，在涵盖多学科的MMLU-Pro上也表现稳定；尤其在竞赛级数学数据集MATH-500中，其推理能力<strong>优于Kimi-K2、GPT-4o及Qwen3-30B-A3B-Instruct-2507</strong>模型，体现出<strong>扎实的数值推理与逻辑分析能力</strong>。整体结果表明，Fin-R1-Pro在通用认知与推理任务中<strong>具备可靠的综合性能</strong>。</p>
+                </div>
+                
+                <!-- 知识能力子部分 -->
+                <h4 class="subsection-title">知识能力方面</h4>
+                
+                <!-- GPQA图表 -->
+                <div class="image-container">
+                    
+                    <img src="GPQA.png" alt="GPQA.png" class="architecture-image">
+                    <div class="image-caption">图13: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 知识能力描述 -->
+                <div class="case1-description">
+                    <p>在<strong>衡量深度、专业知识的权威</strong>基准上，Fin-R1-Pro展现出扎实的学科基础。在极具挑战性的专家级科学数据集GPQA上，Fin-R1-Pro以68.4的得分比肩GPT-4o、Kimi-K2等主流通用模型，显著超越Fino1-14B等金融模型，这表明Fin-R1-Pro具备了跨学科的深度知识理解与综合应用能力。</p>
+                </div>
+                <!-- MMLU-PRO图表 -->
+                <div class="image-container">
+                    
+                    <img src="MMLU-PRO.png" alt="MMLU-PRO.png" class="architecture-image">
+                    <div class="image-caption">图14: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 知识能力描述 -->
+                <div class="case1-description">
+                    <p>在增强版的<strong>大规模多任务理解</strong>数据集MMLU-PRO上，Fin-R1-Pro表现出良好的解决跨学科复杂问题的能力，以69.1分与GPT-4o、Kimi-K2等专业通用模型几乎持平，显著优于Fino1-14B等金融模型，展现了其在通用领域不俗的跨学科素养。
+                    </p>
+                </div>
+                <!-- 数学能力子部分 -->
+                <h4 class="subsection-title">数学能力方面</h4>
+                
+                <!-- 数学能力图表 -->
+                <div class="image-container">
+                    
+                    <img src="MATH-500.png" alt="MATH-500.png" class="architecture-image">
+                    <div class="image-caption">图15: Fin-R1-Pro与先进开闭源模型的比较</div>
+                </div>
+                
+                <!-- 数学能力描述 -->
+                <div class="case1-description">
+                    <p>在<strong>竞赛级数学推理基准MATH-500</strong>上，Fin-R1-Pro展现了卓越的数值计算与逻辑分析能力，以95.0分位居前列。其表现显著超越了<strong>GPT-4o</strong>(79.7%)、<strong>Kimi-K2</strong>(91.2%)及<strong>Qwen3-8B的非思考模式</strong>(87.4%)等多个主流闭源与开源模型，凸显了其在<strong>复杂数学问题上稳定而强大的推理性能</strong>。</p>
+                </div>
+                
+            </section>
+            <section class="content-section">
+
+                
+                <!-- 实际应用落地场景子部分 -->
+                <h4 class="section-title">实际应用落地场景</h4>
+                <div class="case1-description">
+                    <p>在<strong> Agent 智能体应用</strong>方面，结合多模块推理链路，Fin-R1-Pro能驱动智能体执行 “行情分析→报告生成→策略建议” 等任务流，实现<strong>端到端研报生成与策略输出</strong>。智能体通过内置API接口抓取行情、财务和市场情绪数据，实现多源数据实时聚合与校验；通过行情复盘、板块分析和个股聚焦实现结构化输出，并辅助策略预判；驱动智能体自动生成合规格式，并进行场景审核和风险提示；最后根据用户自然语言输入触发个性化需求，实现研报生成。</p>
+                    
+                </div>
+                
+                <!-- 演示案例对话框 -->
+                <div class="case-analysis"> 
+                    <div class="demo-container">
+                    
+                        <div class="demo-content">
+                            <div class="demo-user-request">
+                                <span class="demo-user-request-text">请为我生成2025年10月30日的债券分析报告</span>
+                            </div>
+                            
+                            <div class="demo-ai-response">
+                                <!-- 这里替换为logo图片 -->
+                                <div class="demo-ai-avatar">
+                                    <!-- 请将此处替换为实际的logo图片 -->
+                                    <img src="logo.png" alt="logo.png" style="width: 36px; height: 36px; border-radius: 50%;">
+                                </div>
+                                <div class="demo-ai-content">
+                                    <div class="demo-ai-header">
+                                        <div class="demo-ai-name">Fin-R1-Pro</div>
+                                    </div>
+                                    <div class="demo-ai-text">
+                                        好的，正在为您生成2025年10月30日债券分析报告......
+                                    </div>
+                                    <div class="report-divider"></div>
+                                    <div class="report-content">
+                                        <div class="report-step">
+                                            <div class="step-header">
+                                                <span class="step-icon">1.</span>
+                                                <span>调用数据收集工具</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🔍 正在从 mySQL 数据库获取最新数据……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>📝 编写 mySQL 语句……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>💡 SELECT "indicator_value" FROM bond_data_db_daily WHERE "indicator_name" in data_source_set AND "date" in "2025-10-29 00:00:00"</span>
+                                            </div>
+                                            <div class="sql-code">
+                                                {<br>
+                                                &nbsp;&nbsp;"DR007.IB_high": 1.68,<br>
+                                                &nbsp;&nbsp;"DR007.IB_low": 1.4,<br>
+                                                &nbsp;&nbsp;"SPTAUSDOZ.IDC": 3948.5,<br>
+                                                &nbsp;&nbsp;"上证指数\"收盘价[单位] 元\"": 3988.224,<br>
+                                                &nbsp;&nbsp;"中国:回购定盘利率:7天(FR007)": 1.63,<br>
+                                                &nbsp;&nbsp;"中国:国债到期收益率:5年": 1.576,<br>
+                                                &nbsp;&nbsp;"中国:逆回购数量:7天": 4753.0,<br>
+                                                &nbsp;&nbsp;"创业板指数": 3229.575,<br>
+                                                }
+                                            </div>
+                                            <div class="step-content">
+                                                <span>💡 SELECT "indicator_value" FROM bond_data_db_daily WHERE "indicator_name" in data_source_set AND "date" in "2025-10-28 00:00:00"</span>
+                                            </div>
+                                            <div class="sql-code">
+                                                {<br>
+                                                &nbsp;&nbsp;"DR007.IB_high": 1.65,<br>
+                                                &nbsp;&nbsp;"DR007.IB_low": 1.4,<br>
+                                                &nbsp;&nbsp;"SPTAUSDOZ.IDC": 4006.7,<br>
+                                                &nbsp;&nbsp;"上证指数\"收盘价[单位] 元\"": 4016.331,<br>
+                                                &nbsp;&nbsp;"中国:回购定盘利率:7天(FR007)": 1.6,<br>
+                                                &nbsp;&nbsp;"中国:国债到期收益率:5年": 1.578,<br>
+                                                &nbsp;&nbsp;"中国:逆回购数量:7天": 5577.0,<br>
+                                                &nbsp;&nbsp;"创业板指数": 3324.271,<br>
+                                                }
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="report-step">
+                                            <div class="step-header">
+                                                <span class="step-icon">2.</span>
+                                                <span>调用绘图制表工具</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🎨 正在使用获取的数据进行图表绘制……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <img src="原油价格.png" alt="原油价格.png" class="report-image">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="report-step">
+                                            <div class="step-header">
+                                                <span class="step-icon">3.</span>
+                                                <span>调用新闻源搜集工具</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🚀 正在连接至博查 AI 平台……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🚀 连接成功！</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🔗 浏览网页 <a href="https://finance.eastmoney.com.cn/roll/2025-10-31/doc-infvtwru8744871.shtml" class="news-link">https://finance.eastmoney.com.cn/roll/2025-10-31/doc-infvtwru8744871.shtml</a>......</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>市场普遍认为降息周期已近尾声，但强势欧元与通胀压力或迫使央行未来重新评估政策……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🔗 浏览网页 <a href="https://news.qq.com/rain/a/20251031A0238400" class="news-link">https://news.qq.com/rain/a/20251031A0238400</a>......</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>当地时间10月30日上午，国家主席习近平乘专机抵达韩国，应大韩民国总统李在明邀请，出席亚太经合组织第三十二次……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🔗 浏览网页 <a href="https://finance.eastmoney.com/a/202510303550899622.html" class="news-link">https://finance.eastmoney.com/a/202510303550899622.html</a>......</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>美方将暂停实施其9月29日公布的出口管制50%穿透性规则一年。中方将暂停实施10月9日公布的相关出口管制等措施一年，并将研究细化具体方案……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>🔗 浏览网页 <a href="https://www.yicai.com/news/102888736.html" class="news-link">https://www.yicai.com/news/102888736.html</a>......</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>要纠治急功近利、盲目决策问题，各地区各部门谋划"十五五"工作要从实际出发，防止盲目冲动跟风、指标层层加码等问题。10月28日，中央层面整治形式主义为基层减负……</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="report-step">
+                                            <div class="step-header">
+                                                <span class="step-icon">4.</span>
+                                                <span>调用文字生成工具</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>📄 正在生成研究报告分析文字……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>📝 正在进行总结与合并……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>💡 最新数据显示(2025年10月30日)，7天逆回购利率为1.40%，与前一交易日持平；7天逆回购数量为3426亿元，相对于前一交易日(2025年10月29日)的5577亿元有所减少。根据央行网站消息，10月30日中国人民银行以固定利率、数量招标方式开展了3426亿元7天期逆回购操作，操作利率维持在1.40%水平。央行连续多日保持逆回购利率稳定，显示货币政策维持中性偏松基调。近期逆回购操作规模波动较大，从10月24日的1680亿元逐步增加至10月29日的5577亿元，随后……</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="report-step">
+                                            <div class="step-header">
+                                                <span class="step-icon">5.</span>
+                                                <span>调用核查工具</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>❌ 正在进行数据真实性复核……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>❌ 正在进行文字一致性复核……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>❌ 正在进行内容专业性复核……</span>
+                                            </div>
+                                            <div class="step-content">
+                                                <span>💡 复核完成！研报生成成功！</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+    </div>
+        <div class="case-analysis">
+            
+            <div class="image-container">
+                <!-- <img src="32b.gif" alt="32b.gif" class="gif-image"> -->
+                <video autoplay loop muted playsinline width="100%" height="auto" class="video-element">
+                    <source src="32b.mov" type="video/quicktime">
+                    <source src="32b.mov" type="video/mp4">
+                    您的浏览器不支持HTML5视频。
+                </video>
+            </div>
+        </div>
+        </section>
+        
+            <section class="content-section">
+                <h2 class="section-title">联系我们</h2> <!-- 核心亮点标题 -->
+                <div class="case1-description">
+                    <p>Fin-R1-Pro由上海财经大学统计与数据科学学院教授、AI财经开发与服务中心主任张立文与其领衔的金融大语言模型课题组（SUFE-AIFLM-Lab）研发，诚邀业界同仁共同探索 AI 与金融深度融合的创新范式，共建智慧金融新生态。</p>
+                    <ul class="feature-list">
+                        <li><strong>电子邮件：zhang.liwen@shufe.edu.cn、dpcheng_23@foxmail.com</strong>
+                        <li><strong>GitHub：https://github.com/SUFE-AIFLM-Lab</strong>
+            </section>
+        </div>
+    </div>
+    
+    <!-- JavaScript部分 -->
+    <script>
+        // 简单的标签切换功能
+        // 模型标签切换
+        document.querySelectorAll('.model-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有tab的active类
+                document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+                // 添加active类到当前点击的tab
+                this.classList.add('active');
+            });
+        });
+        
+        // 比较标签切换
+        document.querySelectorAll('.comparison-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有tab的active类
+                document.querySelectorAll('.comparison-tab').forEach(t => t.classList.remove('active'));
+                // 添加active类到当前点击的tab
+                this.classList.add('active');
+            });
+        });
+        
+        // 案例3比较标签切换
+        document.querySelectorAll('.case3-comparison-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有tab的active类
+                document.querySelectorAll('.case3-comparison-tab').forEach(t => t.classList.remove('active'));
+                // 添加active类到当前点击的tab
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

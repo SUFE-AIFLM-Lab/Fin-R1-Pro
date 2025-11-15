@@ -1,0 +1,26 @@
+# Git相关
+.git
+.gitignore
+.gitattributes
+
+# Docker相关
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 文档
+README.md
+*.md
+
+# 编辑器配置
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.tmp
+*.log
+.DS_Store
+
